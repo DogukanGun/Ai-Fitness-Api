@@ -39,6 +39,7 @@ public class UserService {
         User user = getUserByUsername(updateUserRequest.getUsername());
         if(jwtTokenUtil.validateToken(updateUserRequest.getToken(),user)){
             USER_MAPPER.updateUser(user,updateUserRequest);
+            userRepository.save(user);
             return ResponseEntity.ok(UpdateUserResponse.builder()
                     .message("Updated")
                     .status(HttpStatus.OK)

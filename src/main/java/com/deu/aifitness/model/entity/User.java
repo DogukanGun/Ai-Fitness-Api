@@ -9,6 +9,9 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 @Data
@@ -28,6 +31,7 @@ public class User extends BaseEntity {
 
     private String surname;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -37,4 +41,5 @@ public class User extends BaseEntity {
     private String email;
 
     private String phoneNumber;
+
 }

@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.NumberFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -14,14 +17,25 @@ import java.util.Date;
 @Builder
 public class CreateUserRequest {
 
-    private Integer id;
-
+    @NotNull
+    @NotBlank
     private String name;
 
+    @NotNull
+    @NotBlank
     private String username;
+
+    @NotNull
+    @NotBlank
+    private String password;
+
+    @NotNull
+    @NotBlank
+    private String email;
 
     private Date birthday;
 
+    // TODO: 23.11.2021 buraya anataston yazilacak
     private String phoneNumber;
 
 }
