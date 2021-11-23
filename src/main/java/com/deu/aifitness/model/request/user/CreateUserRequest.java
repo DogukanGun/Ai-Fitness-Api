@@ -1,6 +1,7 @@
 package com.deu.aifitness.model.request.user;
 
 
+import com.deu.aifitness.annotations.PhoneNumber;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,7 +36,7 @@ public class CreateUserRequest {
 
     private Date birthday;
 
-    // TODO: 23.11.2021 buraya anataston yazilacak
+    @PhoneNumber
     private String phoneNumber;
 
 }
