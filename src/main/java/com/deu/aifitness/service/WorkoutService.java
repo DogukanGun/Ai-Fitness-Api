@@ -65,7 +65,11 @@ public class WorkoutService {
 
         return ResponseEntity.ok(workoutImageDto);
     }
-
+    public ResponseEntity<WorkoutDto> changeRate(int id,double newRate){
+        Workout workout = getWorkout(id);
+        workout.setWorkoutRating(newRate);
+        return ResponseEntity.ok(WORKOUT_MAPPER.convertToWorkoutDto(workout));
+    }
     public ResponseEntity<WorkoutDto> getWorkoutDto(int id){
         Workout workout = getWorkout(id);
         WorkoutDto workoutDto = WORKOUT_MAPPER.convertToWorkoutDto(workout);

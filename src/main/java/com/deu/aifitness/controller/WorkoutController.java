@@ -2,7 +2,6 @@ package com.deu.aifitness.controller;
 
 import com.deu.aifitness.model.dto.workout.WorkoutDto;
 import com.deu.aifitness.model.dto.workout.WorkoutImageDto;
-import com.deu.aifitness.model.entity.workout.WorkoutImage;
 import com.deu.aifitness.model.request.workout.CreateWorkoutRequest;
 import com.deu.aifitness.model.request.workout.UpdateWorkoutRequest;
 import com.deu.aifitness.service.WorkoutService;
@@ -30,8 +29,14 @@ public class WorkoutController {
     public ResponseEntity<WorkoutDto> getWorkout(@PathVariable int id){
         return workoutService.getWorkoutDto(id);
     }
+
     @GetMapping("workoutImage/{id}")
     public ResponseEntity<WorkoutImageDto> getWorkoutImage(@PathVariable int id){
         return workoutService.getWorkoutImageById(id);
+    }
+
+    @PatchMapping("updateRate/{id}")
+    public ResponseEntity<WorkoutDto> changeRate(@PathVariable int id,@RequestParam double newRate){
+        return workoutService.changeRate(id, newRate);
     }
 }
