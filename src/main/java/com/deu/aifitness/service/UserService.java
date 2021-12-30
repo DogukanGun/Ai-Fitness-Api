@@ -6,7 +6,7 @@ import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.entity.User;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
-import com.deu.aifitness.model.response.user.UpdateUserResponse;
+import com.deu.aifitness.model.response.Response;
 import com.deu.aifitness.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -35,18 +35,18 @@ public class UserService {
         return userRepository.findByUsernameEquals(username).orElseThrow(()->new NotFoundException("User Not Found"));
     }
 
-    public ResponseEntity<UpdateUserResponse> updateUser(UpdateUserRequest updateUserRequest){
+    public ResponseEntity<Response> updateUser(UpdateUserRequest updateUserRequest){
         User user = getUserByUsername(updateUserRequest.getUsername());
         if(jwtTokenUtil.validateToken(updateUserRequest.getToken(),user)){
             USER_MAPPER.updateUser(user,updateUserRequest);
             userRepository.save(user);
-            return ResponseEntity.ok(UpdateUserResponse.builder()
+            return ResponseEntity.ok(Response.builder()
                     .message("Updated")
                     .status(HttpStatus.OK)
                     .build());
         }
 
-        return ResponseEntity.ok(UpdateUserResponse.builder()
+        return ResponseEntity.ok(Response.builder()
                 .message("Token is expired")
                 .status(HttpStatus.OK)
                 .build());

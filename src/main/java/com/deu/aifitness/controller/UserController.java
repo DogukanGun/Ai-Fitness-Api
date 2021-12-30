@@ -4,14 +4,14 @@ package com.deu.aifitness.controller;
 import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
-import com.deu.aifitness.model.response.user.UpdateUserResponse;
+import com.deu.aifitness.model.response.Response;
 import com.deu.aifitness.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<UpdateUserResponse> updateUser(@RequestBody UpdateUserRequest updateUserRequest){
+    public ResponseEntity<Response> updateUser(@RequestBody UpdateUserRequest updateUserRequest){
         return userService.updateUser(updateUserRequest);
     }
 

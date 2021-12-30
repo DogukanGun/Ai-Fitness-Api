@@ -1,4 +1,4 @@
-package com.deu.aifitness.model.response.user;
+package com.deu.aifitness.model.response;
 
 
 import lombok.AllArgsConstructor;
@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UpdateUserResponse {
+public class Response {
     private String message;
 
     private HttpStatus status;

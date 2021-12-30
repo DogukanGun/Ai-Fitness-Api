@@ -1,0 +1,15 @@
+package com.deu.aifitness.model.request.menu;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class UpdateCreateMenuRequest {
+    private String menuName;
+}

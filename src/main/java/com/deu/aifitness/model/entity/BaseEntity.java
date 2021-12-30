@@ -30,3 +30,4 @@ public class BaseEntity {
     @CreatedDate
     private Date createdDate;
 }
+
