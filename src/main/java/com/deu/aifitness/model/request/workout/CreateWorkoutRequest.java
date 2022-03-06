@@ -1,7 +1,6 @@
 package com.deu.aifitness.model.request.workout;
 
 
-import com.deu.aifitness.model.entity.workout.WorkoutImage;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +21,6 @@ public class CreateWorkoutRequest {
 
     private Integer imageId;
 
-    private CreateWorkoutImageRequest workoutImage;
+    private String workoutImage;
 
 }

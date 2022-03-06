@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @EnableJpaAuditing
 public class AiFitnessApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AiFitnessApplication.class, args);
     }

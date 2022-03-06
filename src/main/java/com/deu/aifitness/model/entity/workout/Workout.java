@@ -12,6 +12,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import javax.swing.*;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,13 +33,6 @@ public class Workout extends BaseEntity {
 
     private double workoutRating;
 
-    @Column(name = "image_id")
-    private Integer imageId;
-
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "image_id",unique = true,nullable = false,insertable = false,updatable = false)
-    private WorkoutImage workoutImage;
-
-
+    private String workoutImage;
 
 }

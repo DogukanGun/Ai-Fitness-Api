@@ -22,7 +22,7 @@ import java.util.Date;
 @SuperBuilder
 @SQLDelete(sql="Update users SET is_deleted = true where id = ?")
 @Where(clause = "is_deleted=false")
-public class User extends BaseEntity {
+public class User extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Integer id;

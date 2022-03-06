@@ -15,4 +15,6 @@ public class UpdateWorkoutRequest {
     private String workoutName;
 
     private String workoutDescription;
+
+    private String workoutImage;
 }
