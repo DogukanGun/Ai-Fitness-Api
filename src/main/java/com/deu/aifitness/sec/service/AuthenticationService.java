@@ -4,6 +4,7 @@ package com.deu.aifitness.sec.service;
 import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.entity.User;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
+import com.deu.aifitness.model.request.user.UpdateUserRequest;
 import com.deu.aifitness.sec.dto.SecLoginRequestDto;
 import com.deu.aifitness.sec.enums.EnumJwtConstant;
 import com.deu.aifitness.sec.security.JwtTokenGenerator;
@@ -16,6 +17,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
+
+import static com.deu.aifitness.model.mapper.UserMapper.USER_MAPPER;
 
 
 @Service
@@ -31,6 +35,10 @@ public class AuthenticationService {
 
         UserDto cusCustomerDto = cusCustomerService.createUser(cusCustomerSaveRequestDto);
         return cusCustomerDto;
+    }
+
+    public UserDto updateUser(UpdateUserRequest updateUserRequest){
+        return cusCustomerService.updateUser(updateUserRequest);
     }
 
     public String login(SecLoginRequestDto secLoginRequestDto) {

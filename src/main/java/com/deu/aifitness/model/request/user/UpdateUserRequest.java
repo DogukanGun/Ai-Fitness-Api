@@ -16,13 +16,9 @@ public class UpdateUserRequest {
 
     private String username;
 
-    private String token;
-
     private String email;
 
     private String phoneNumber;
-
-    private Date birthday;
 
 
 }

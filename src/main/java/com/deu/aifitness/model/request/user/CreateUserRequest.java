@@ -33,10 +33,4 @@ public class CreateUserRequest {
     @NotNull
     @NotBlank
     private String email;
-
-    private Date birthday;
-
-    @PhoneNumber
-    private String phoneNumber;
-
 }

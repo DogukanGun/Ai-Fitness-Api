@@ -36,8 +36,6 @@ public class User extends BaseEntity{
 
     private String password;
 
-    private Date birthday;
-
     private String email;
 
     private String phoneNumber;
