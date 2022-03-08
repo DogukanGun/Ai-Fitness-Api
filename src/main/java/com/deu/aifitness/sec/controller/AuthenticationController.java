@@ -3,6 +3,7 @@ package com.deu.aifitness.sec.controller;
 import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
+import com.deu.aifitness.sec.dto.LoginResponse;
 import com.deu.aifitness.sec.dto.RestResponse;
 import com.deu.aifitness.sec.dto.SecLoginRequestDto;
 import com.deu.aifitness.sec.service.AuthenticationService;
@@ -22,9 +23,9 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody SecLoginRequestDto secLoginRequestDto){
 
-        String token = authenticationService.login(secLoginRequestDto);
+        LoginResponse loginResponse = authenticationService.login(secLoginRequestDto);
 
-        return ResponseEntity.ok(RestResponse.of(token));
+        return ResponseEntity.ok(RestResponse.of(loginResponse));
     }
 
     @PostMapping("/register")

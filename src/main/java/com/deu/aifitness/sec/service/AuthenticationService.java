@@ -5,6 +5,7 @@ import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.entity.User;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
+import com.deu.aifitness.sec.dto.LoginResponse;
 import com.deu.aifitness.sec.dto.SecLoginRequestDto;
 import com.deu.aifitness.sec.enums.EnumJwtConstant;
 import com.deu.aifitness.sec.security.JwtTokenGenerator;
@@ -44,7 +45,7 @@ public class AuthenticationService {
     public UserDto updateUser(UpdateUserRequest updateUserRequest){
         return cusCustomerService.updateUser(updateUserRequest);
     }
-    public String login(SecLoginRequestDto secLoginRequestDto) {
+    public LoginResponse login(SecLoginRequestDto secLoginRequestDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(secLoginRequestDto.getUsername(), secLoginRequestDto.getPassword());
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
@@ -54,7 +55,12 @@ public class AuthenticationService {
 
         String bearer = EnumJwtConstant.BEARER.getConstant();
 
-        return bearer + token;
+        LoginResponse loginResponse = LoginResponse.builder()
+                .username(secLoginRequestDto.getUsername())
+                .token(bearer)
+                .build();
+
+        return loginResponse;
     }
 
     public User getCurrentCustomer() {
