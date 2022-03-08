@@ -8,6 +8,7 @@ import com.deu.aifitness.sec.dto.SecLoginRequestDto;
 import com.deu.aifitness.sec.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -32,6 +33,11 @@ public class AuthenticationController {
         UserDto cusCustomerDto =authenticationService.register(createUserRequest);
 
         return ResponseEntity.ok(RestResponse.of(cusCustomerDto));
+    }
+
+    @PostMapping("/getProfile")
+    public ResponseEntity getProfile(@RequestBody UpdateUserRequest updateUserRequest){
+        return ResponseEntity.ok(RestResponse.of(authenticationService.getProfile(updateUserRequest)));
     }
 
     @PostMapping("/updateUser")

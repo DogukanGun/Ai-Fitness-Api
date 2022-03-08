@@ -37,10 +37,13 @@ public class AuthenticationService {
         return cusCustomerDto;
     }
 
+    public UserDto getProfile(UpdateUserRequest updateUserRequest){
+        return cusCustomerService.getUserProfile(updateUserRequest);
+    }
+
     public UserDto updateUser(UpdateUserRequest updateUserRequest){
         return cusCustomerService.updateUser(updateUserRequest);
     }
-
     public String login(SecLoginRequestDto secLoginRequestDto) {
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(secLoginRequestDto.getUsername(), secLoginRequestDto.getPassword());

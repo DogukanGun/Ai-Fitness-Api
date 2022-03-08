@@ -28,6 +28,11 @@ public class UserService {
         return USER_MAPPER.convertToUserDto(userRepository.save(user));
     }
 
+    public UserDto getUserProfile(UpdateUserRequest updateUserRequest){
+        return USER_MAPPER.convertToUserDto(userRepository.findByUsernameEquals(updateUserRequest.getUsername())
+                .orElseThrow(()->new NotFoundException("User Not Found")));
+    }
+
     public UserDto updateUser(UpdateUserRequest updateUserRequest){
         if (!updateUserRequest.getUsername().equals("")){
             User user = userRepository.findByUsernameEquals(updateUserRequest.getUsername())
