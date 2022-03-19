@@ -23,7 +23,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/updatephoto")
-    public UserDto saveUserPhoto(SaveUserPhotoRequest saveUserPhotoRequest){
+    public UserDto saveUserPhoto(@RequestBody SaveUserPhotoRequest saveUserPhotoRequest){
         return userService.saveUserPhoto(saveUserPhotoRequest);
     }
 
