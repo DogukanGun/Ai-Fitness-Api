@@ -5,6 +5,7 @@ import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.entity.User;
 import com.deu.aifitness.model.enums.UserType;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
+import com.deu.aifitness.model.request.user.SaveUserPhotoRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
 import com.deu.aifitness.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,12 @@ public class UserService {
         return USER_MAPPER.convertToUserDto(userRepository.save(user));
     }
 
+    public UserDto saveUserPhoto(SaveUserPhotoRequest saveUserPhotoRequest){
+        User user = userRepository.findByUsernameEquals(saveUserPhotoRequest.getUsername())
+                .orElseThrow(()->new NotFoundException("User not found"));
+        user.setUserPhoto(saveUserPhotoRequest.getUserPhoto());
+        return USER_MAPPER.convertToUserDto(userRepository.save(user));
+    }
 
     public UserDto getUserProfile(UpdateUserRequest updateUserRequest){
         return USER_MAPPER.convertToUserDto(userRepository.findByUsernameEquals(updateUserRequest.getUsername())

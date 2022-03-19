@@ -36,7 +36,7 @@ public class WorkoutController {
         return workoutService.getWorkoutDto(id);
     }
 
-    @PatchMapping("updateRate/{id}")
+    @PostMapping("updateRate/{id}")
     public ResponseEntity<WorkoutDto> changeRate(@PathVariable int id,@RequestParam double newRate){
         return workoutService.changeRate(id, newRate);
     }

@@ -44,13 +44,5 @@ public class AuthenticationController {
         return ResponseEntity.ok(RestResponse.of(cusCustomerDto));
     }
 
-    @PostMapping("/getProfile")
-    public ResponseEntity getProfile(@RequestBody UpdateUserRequest updateUserRequest){
-        return ResponseEntity.ok(RestResponse.of(authenticationService.getProfile(updateUserRequest)));
-    }
 
-    @PostMapping("/updateUser")
-    public ResponseEntity updateUser(@RequestBody UpdateUserRequest updateUserRequest){
-        return ResponseEntity.ok(RestResponse.of(authenticationService.updateUser(updateUserRequest)));
-    }
 }

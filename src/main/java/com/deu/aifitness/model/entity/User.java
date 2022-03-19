@@ -41,4 +41,6 @@ public class User extends BaseEntity{
     private String phoneNumber;
 
     private String userType;
+
+    private String userPhoto;
 }
