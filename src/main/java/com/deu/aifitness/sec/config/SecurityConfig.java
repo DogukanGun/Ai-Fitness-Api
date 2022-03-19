@@ -1,5 +1,6 @@
 package com.deu.aifitness.sec.config;
 
+import com.deu.aifitness.model.enums.UserType;
 import com.deu.aifitness.sec.security.JwtAuthenticationEntryPoint;
 import com.deu.aifitness.sec.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -83,13 +84,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/auth/**",
-                        "/workout/**",
                         "/swagger-ui/**",
                         "/swagger-ui.html",
                         "/v3/api-docs/**"
                 )
                 .permitAll()
+                .antMatchers("/workout/**").hasAnyAuthority(UserType.USER.getLabel(),UserType.ADMIN.label)
                 .anyRequest().authenticated();
+
+        httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
     }
 }

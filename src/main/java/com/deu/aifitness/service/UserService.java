@@ -3,6 +3,7 @@ package com.deu.aifitness.service;
 
 import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.entity.User;
+import com.deu.aifitness.model.enums.UserType;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
 import com.deu.aifitness.repository.UserRepository;
@@ -21,12 +22,14 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
 
-    public UserDto createUser(CreateUserRequest createUserRequest){
+    public UserDto createUser(CreateUserRequest createUserRequest, UserType userType){
         User user = USER_MAPPER.createUser(createUserRequest);
+        user.setUserType(userType.getLabel());
         String password = passwordEncoder.encode(user.getPassword());
         user.setPassword(password);
         return USER_MAPPER.convertToUserDto(userRepository.save(user));
     }
+
 
     public UserDto getUserProfile(UpdateUserRequest updateUserRequest){
         return USER_MAPPER.convertToUserDto(userRepository.findByUsernameEquals(updateUserRequest.getUsername())

@@ -1,4 +1,4 @@
-package com.deu.aifitness.model.dto;
+package com.deu.aifitness.model.request.workout;
 
 
 import lombok.AllArgsConstructor;
@@ -10,18 +10,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
-
-    private Integer id;
-
-    private String name;
+public class CreateUserWorkoutRequest {
 
     private String username;
 
-    private String email;
+    private String workoutName;
 
-    private String phoneNumber;
+    private String image1;
 
-    private String userType;
+    private String image2;
 
+    private String image3;
 }

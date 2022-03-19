@@ -31,7 +31,7 @@ public class JwtUserDetails implements UserDetails {
         String password = cusCustomer.getPassword();
 
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
-        grantedAuthorityList.add(new SimpleGrantedAuthority("user"));
+        grantedAuthorityList.add(new SimpleGrantedAuthority(cusCustomer.getUserType()));
 
         return new JwtUserDetails(id, username, password, grantedAuthorityList);
     }

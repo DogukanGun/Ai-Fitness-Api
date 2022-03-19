@@ -3,6 +3,7 @@ package com.deu.aifitness.sec.service;
 
 import com.deu.aifitness.model.dto.UserDto;
 import com.deu.aifitness.model.entity.User;
+import com.deu.aifitness.model.enums.UserType;
 import com.deu.aifitness.model.request.user.CreateUserRequest;
 import com.deu.aifitness.model.request.user.UpdateUserRequest;
 import com.deu.aifitness.sec.dto.LoginResponse;
@@ -34,9 +35,16 @@ public class AuthenticationService {
 
     public UserDto register(CreateUserRequest cusCustomerSaveRequestDto) {
 
-        UserDto cusCustomerDto = cusCustomerService.createUser(cusCustomerSaveRequestDto);
+        UserDto cusCustomerDto = cusCustomerService.createUser(cusCustomerSaveRequestDto, UserType.USER);
         return cusCustomerDto;
     }
+
+    public UserDto registerAsAdmin(CreateUserRequest cusCustomerSaveRequestDto) {
+
+        UserDto cusCustomerDto = cusCustomerService.createUser(cusCustomerSaveRequestDto, UserType.ADMIN);
+        return cusCustomerDto;
+    }
+
 
     public UserDto getProfile(UpdateUserRequest updateUserRequest){
         return cusCustomerService.getUserProfile(updateUserRequest);
@@ -54,10 +62,12 @@ public class AuthenticationService {
         String token = jwtTokenGenerator.generateJwtToken(authentication);
 
         String bearer = EnumJwtConstant.BEARER.getConstant();
+        User user = getCurrentCustomer();
 
         LoginResponse loginResponse = LoginResponse.builder()
                 .username(secLoginRequestDto.getUsername())
-                .token(bearer)
+                .token(bearer+token)
+                .userType(user.getUserType())
                 .build();
 
         return loginResponse;

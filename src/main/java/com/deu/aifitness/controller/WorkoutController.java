@@ -1,8 +1,11 @@
 package com.deu.aifitness.controller;
 
+import com.deu.aifitness.model.dto.workout.UserWorkoutDto;
 import com.deu.aifitness.model.dto.workout.WorkoutDto;
+import com.deu.aifitness.model.request.workout.CreateUserWorkoutRequest;
 import com.deu.aifitness.model.request.workout.CreateWorkoutRequest;
 import com.deu.aifitness.model.request.workout.UpdateWorkoutRequest;
+import com.deu.aifitness.service.UserWorkoutService;
 import com.deu.aifitness.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.jdbc.Work;
@@ -16,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class WorkoutController {
     private final WorkoutService workoutService;
+    private final UserWorkoutService userWorkoutService;
 
     @PostMapping
     public ResponseEntity<WorkoutDto> createWorkout(@RequestBody CreateWorkoutRequest createWorkoutRequest){
@@ -50,6 +54,11 @@ public class WorkoutController {
     @PostMapping("workout/all")
     public ResponseEntity<List<WorkoutDto>> getWorkouts(){
         return workoutService.getAllWorkouts();
+    }
+
+    @PostMapping("userworkout/upload")
+    public UserWorkoutDto uploadUserWorkout(@RequestBody CreateUserWorkoutRequest createUserWorkoutRequest){
+        return userWorkoutService.createUserWorkout(createUserWorkoutRequest);
     }
 
 }

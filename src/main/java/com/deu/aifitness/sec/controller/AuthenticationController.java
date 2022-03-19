@@ -36,6 +36,14 @@ public class AuthenticationController {
         return ResponseEntity.ok(RestResponse.of(cusCustomerDto));
     }
 
+    @PostMapping("/registerasadmin")
+    public ResponseEntity registerAsAdmin(@RequestBody CreateUserRequest createUserRequest){
+
+        UserDto cusCustomerDto =authenticationService.registerAsAdmin(createUserRequest);
+
+        return ResponseEntity.ok(RestResponse.of(cusCustomerDto));
+    }
+
     @PostMapping("/getProfile")
     public ResponseEntity getProfile(@RequestBody UpdateUserRequest updateUserRequest){
         return ResponseEntity.ok(RestResponse.of(authenticationService.getProfile(updateUserRequest)));
