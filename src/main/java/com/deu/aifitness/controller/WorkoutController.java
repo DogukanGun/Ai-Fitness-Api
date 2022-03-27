@@ -1,10 +1,12 @@
 package com.deu.aifitness.controller;
 
+import com.deu.aifitness.model.dto.workout.UploadWorkoutDto;
 import com.deu.aifitness.model.dto.workout.UserWorkoutDto;
 import com.deu.aifitness.model.dto.workout.WorkoutDto;
 import com.deu.aifitness.model.request.workout.CreateUserWorkoutRequest;
 import com.deu.aifitness.model.request.workout.CreateWorkoutRequest;
 import com.deu.aifitness.model.request.workout.UpdateWorkoutRequest;
+import com.deu.aifitness.model.request.workout.UploadWorkoutRequest;
 import com.deu.aifitness.service.UserWorkoutService;
 import com.deu.aifitness.service.WorkoutService;
 import lombok.RequiredArgsConstructor;
@@ -59,6 +61,11 @@ public class WorkoutController {
     @PostMapping("userworkout/upload")
     public UserWorkoutDto uploadUserWorkout(@RequestBody CreateUserWorkoutRequest createUserWorkoutRequest){
         return userWorkoutService.createUserWorkout(createUserWorkoutRequest);
+    }
+
+    @PostMapping("workout/upload")
+    public UploadWorkoutDto uploadWorkoutDto(@RequestBody UploadWorkoutRequest uploadWorkoutRequest){
+        return userWorkoutService.uploadWorkoutRequest(uploadWorkoutRequest);
     }
 
 }

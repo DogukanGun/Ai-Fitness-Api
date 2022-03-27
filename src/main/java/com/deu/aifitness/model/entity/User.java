@@ -42,5 +42,6 @@ public class User extends BaseEntity{
 
     private String userType;
 
+    @Column(length = 1350000)
     private String userPhoto;
 }
