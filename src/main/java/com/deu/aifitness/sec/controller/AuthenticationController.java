@@ -24,7 +24,9 @@ public class AuthenticationController {
     public ResponseEntity login(@RequestBody SecLoginRequestDto secLoginRequestDto){
 
         LoginResponse loginResponse = authenticationService.login(secLoginRequestDto);
-
+        if (loginResponse == null){
+            return ResponseEntity.ok(RestResponse.error(loginResponse));
+        }
         return ResponseEntity.ok(RestResponse.of(loginResponse));
     }
 
